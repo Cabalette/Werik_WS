@@ -1,4 +1,3 @@
-using MW_and_DI_Training;
 namespace Test1
 {
     public class Program
