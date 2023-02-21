@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MW_and_DI_Training;
 using System.Net.WebSockets;
 using System.Text;
 
@@ -36,8 +37,8 @@ namespace Test1.Controllers
             int i = 0;
             while (i<10)
             {
-                var date = DateTime.Now.ToString();
-                var serverMsg = Encoding.UTF8.GetBytes($"Time is {date}. I = {i}");
+                var time = new ShortTime().GetTime();
+                var serverMsg = Encoding.UTF8.GetBytes($"Time is {time}. I = {i}");
                 await webSocket.SendAsync(new ArraySegment<byte>(serverMsg, 0, serverMsg.Length),
                                           WebSocketMessageType.Text,
                                           true,
@@ -46,6 +47,7 @@ namespace Test1.Controllers
                 i++;
             } 
             await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Just", CancellationToken.None);
+
         }
     }
 }

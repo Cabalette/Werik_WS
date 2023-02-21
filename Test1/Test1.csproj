@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\MW and DI\MW and DI Training\MW and DI Training\MW and DI Training.csproj" />
+  </ItemGroup>
+
 </Project>
