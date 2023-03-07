@@ -7,6 +7,8 @@ namespace Test1
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+            builder.Services.AddTransient<IShowTime, ShortTime>();
+            builder.Services.AddTransient<IShowTime, LongTime>();
             var app = builder.Build();
 
             // <snippet_UseWebSockets>
@@ -19,9 +21,8 @@ namespace Test1
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
             app.MapControllers();
-
+            app.UseMiddleware<ShowTimeMiddleware>();
             app.Run();
         }
     }
